@@ -8,7 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [https://developers.google.com/maps/documentation/javascript/places](Google Places Documentation)
 
-[https://developers.google.com/maps/documentation/javascript/places-autocomplete](Google Places Autocomplete Documentation)
+[https://developers.google.com/maps/documentation/javascript/places-autocomplete](Google Places Autocomplete Documentation) or [https://react-google-maps-api-docs.netlify.app/#autocomplete](React Google Autocomplete Documentation)
+
+[https://www.npmjs.com/package/@react-google-maps/api](React Google Maps API library)
 
 ## Project Requirements
 
@@ -34,9 +36,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Notes before coding:
 
-- This is for lunch, so possibly hard-code search for restaurants that are currently open? Or provide a toggle for 'open now' or 'lunch spots only'
+- This is for lunch, so possibly hard-code search for restaurants that are currently open? Or
+  provide a toggle for 'open now' or 'lunch spots only'
 - Don't make your API key public 😅
 - Favorites: local storage? Adding authentication feels out of scope for this type of project
+
+## Notes during development:
+
+- Scale: the Google Places API has request quotas and [https://developers.google.com/maps/documentation/javascript/places#UsageLimits](they recommend service APIs if batch requests are needed.)
+- Default map location: user's location, if available, or AllTrails HQ: 530 Bush St #900, San Francisco
+- Security: Currently, I would not deploy this app as .env files are not secure and would expose my private API key during the build process. Hosting this app in a private repo will provide security for now. If I need to deploy this, a middleware that API that I build where the google API key could be more securely stored could be one possible solution to keep the API key safe.
 
 ## Available Scripts
 
