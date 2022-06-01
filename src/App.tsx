@@ -1,23 +1,27 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import ResultsItem from "components/Results/ResultsItem";
+import Header from "components/Header/Header";
+import ResultsList from "components/Results/ResultsList";
+import MapWrapper from "components/Map/MapWrapper";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "styles/theme";
+import Box from "@mui/material/Box";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <ResultsItem
-          active={false}
-          numberOfReviews={4333}
-          rating={4.3}
-          title="Best Title"
-          onClick={() => console.log("clickme")}
-        />
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Header />
+        <Box
+          sx={{
+            display: "flex",
+            marginTop: 2,
+            justifyContent: "center",
+          }}
+        >
+          <ResultsList results={[]} />
+          <MapWrapper />
+        </Box>
+      </div>
+    </ThemeProvider>
   );
 }
 

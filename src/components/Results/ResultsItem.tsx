@@ -1,10 +1,8 @@
-import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import defaultAvatar from "images/defaultAvatar.jpeg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -15,7 +13,7 @@ interface Props {
   avatarUrl?: string;
   favorite?: boolean;
   numberOfReviews: number;
-  rating: number;
+  rating?: number;
   subtitle?: string;
   title: string;
   onClick: () => void;
@@ -23,7 +21,7 @@ interface Props {
 
 function ResultsItem({
   active,
-  avatarUrl,
+  avatarUrl = defaultAvatar,
   favorite,
   numberOfReviews,
   rating,
@@ -32,43 +30,53 @@ function ResultsItem({
   onClick,
 }: Props) {
   return (
-    <Card>
-      <CardContent sx={{ display: "flex" }}>
-        <Avatar
-          alt={`${title}-photo`}
-          sx={{ width: 50, height: 50 }}
-          srcSet={defaultAvatar}
-          variant="rounded"
-        />
+    <Card sx={{ border: "0.5px solid #CCCCCC" }}>
+      <Box sx={{ display: "flex", padding: 1, paddingBottom: 1 }}>
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: "flex-start",
-            alignItems: "left",
-            marginLeft: 1,
-            marginRight: 1,
-          }}
+          sx={{ display: "flex", alignItems: "flex-start" }}
+          onClick={onClick}
         >
-          <Typography variant="h6">{title}</Typography>
-          <Box sx={{ display: "flex" }}>
-            <Rating
-              name={`${title} rating: ${rating}`}
-              color="F5D24A"
-              value={rating}
-              precision={1}
-              readOnly
-              size="small"
-              emptyIcon={<StarIcon fontSize="inherit" />}
-            />
-            <Typography sx={{ marginLeft: 0.4 }} variant="caption">
-              (${numberOfReviews})
-            </Typography>
+          <Avatar
+            alt={`${title}-photo`}
+            sx={{ width: 60, height: 60 }}
+            srcSet={avatarUrl}
+            variant="square"
+          />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              marginLeft: 1,
+              marginRight: 1,
+            }}
+          >
+            <Typography variant="h6">{title}</Typography>
+            <Box sx={{ display: "flex" }}>
+              <Rating
+                name={`${title} rating: ${rating}`}
+                color="F5D24A"
+                value={rating}
+                precision={1}
+                readOnly
+                size="small"
+                emptyIcon={<StarIcon fontSize="inherit" />}
+              />
+              <Typography sx={{ marginLeft: 0.4 }} variant="caption">
+                ({numberOfReviews})
+              </Typography>
+            </Box>
+            {subtitle && <Typography variant="caption">{subtitle}</Typography>}
           </Box>
-
-          {subtitle && <Typography>{subtitle}</Typography>}
         </Box>
-        <div>{favorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}</div>
-      </CardContent>{" "}
+        <Box onClick={() => console.log("favorite")}>
+          {favorite ? (
+            <FavoriteIcon color="primary" />
+          ) : (
+            <FavoriteBorderIcon sx={{ opacity: "0.3" }} />
+          )}
+        </Box>
+      </Box>
     </Card>
   );
 }

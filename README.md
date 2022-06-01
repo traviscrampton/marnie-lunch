@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [https://developers.google.com/maps/documentation/javascript/places](Google Places Documentation)
 
-[https://developers.google.com/maps/documentation/javascript/places-autocomplete](Google Places Autocomplete Documentation) or [https://react-google-maps-api-docs.netlify.app/#autocomplete](React Google Autocomplete Documentation)
+[https://developers.google.com/maps/documentation/javascript/places-autocomplete](Google Places Autocomplete Documentation)
 
 [https://www.npmjs.com/package/@react-google-maps/api](React Google Maps API library)
 
@@ -46,6 +46,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Scale: the Google Places API has request quotas and [https://developers.google.com/maps/documentation/javascript/places#UsageLimits](they recommend service APIs if batch requests are needed.)
 - Default map location: user's location, if available, or AllTrails HQ: 530 Bush St #900, San Francisco
 - Security: Currently, I would not deploy this app as .env files are not secure and would expose my private API key during the build process. Hosting this app in a private repo will provide security for now. If I need to deploy this, a middleware that API that I build where the google API key could be more securely stored could be one possible solution to keep the API key safe.
+- The text color given in the designs are not accessible
+- The card design isn't accessible as the favorite button is nested inside of a clickable card
 
 ## Available Scripts
 
