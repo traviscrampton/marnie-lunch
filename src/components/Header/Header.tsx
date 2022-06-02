@@ -70,7 +70,7 @@ export default function Header() {
               }}
             >
               <Button
-                aria-controls="filter-menu"
+                aria-controls={open ? "filter-menu" : undefined}
                 id="filters-button"
                 size="small"
                 variant="outlined"

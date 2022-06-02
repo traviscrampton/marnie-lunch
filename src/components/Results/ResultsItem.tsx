@@ -69,7 +69,6 @@ function ResultsItem({ result }: Props) {
             <Typography variant="h6">{result?.name}</Typography>
             <Box sx={{ display: "flex" }}>
               <Rating
-                aria-
                 name={`${result?.name} rating: ${result?.rating}`}
                 color="F5D24A"
                 value={result?.rating || 0}

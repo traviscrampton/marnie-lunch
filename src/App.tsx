@@ -13,6 +13,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 function App() {
   const mapRef = useRef<HTMLDivElement | null>(null);
+  const resultsRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useMediaQuery("(max-width:600px)");
   const getCenter = useCallback(() => {
     let tempCenter = {
@@ -111,6 +112,10 @@ function App() {
     mapRef?.current?.scrollIntoView();
   };
 
+  const scrollToList = () => {
+    resultsRef.current?.scrollIntoView();
+  };
+
   return (
     <Context.Provider value={contextValue}>
       <ThemeProvider theme={theme}>
@@ -124,23 +129,36 @@ function App() {
               flexWrap: "wrap",
             }}
           >
-            <ResultsList />
+            <ResultsList ref={resultsRef} />
             <MapWrapper ref={mapRef} />
             {isMobile && (
-              <Button
-                startIcon={<RoomIcon />}
-                variant="contained"
-                color="primary"
+              <Box
                 sx={{
                   position: "sticky",
                   bottom: "40px",
                   left: "50%",
                   transform: "translate(-50%)",
                 }}
-                onClick={scrollToMap}
               >
-                Map
-              </Button>
+                <Button
+                  startIcon={<RoomIcon />}
+                  variant="contained"
+                  color="primary"
+                  sx={{ marginRight: 0.5 }}
+                  onClick={scrollToMap}
+                >
+                  Map
+                </Button>
+                <Button
+                  startIcon={<RoomIcon />}
+                  variant="contained"
+                  color="primary"
+                  sx={{ marginLeft: 0.5 }}
+                  onClick={scrollToList}
+                >
+                  List
+                </Button>
+              </Box>
             )}
           </Box>
         </Box>

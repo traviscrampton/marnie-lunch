@@ -9,6 +9,7 @@ REACT_APP_NOT_SECRET_GOOGLE_API_KEY={your key here}
 ```
 
 Save your file, run `npm install`, and then `npm start`.
+You may need to use `npm install --legacy-peer-deps` if you receive warnings about resolutions.
 
 ## Documents
 
@@ -36,15 +37,18 @@ Save your file, run `npm install`, and then `npm start`.
 
 - Pagination or 'load more' button
 - Clicking marker highlights result item
+- Clicking card zooms user in closer to map
+- Clicking card makes marker animate or change color
 
 ## Could Haves
 
 - [x] Responsive design
-- [ ] Filter for outdoor seating
-- [ ] Adding the functionality for setting the filters
+- [ ] Filter for outdoor seating or other covid or cultural preferences
+- [ ] Adding the functionality for setting the filters (this would be added to the context, and the `Header` component would set it when the 'Apply' button is pressed)
 - [ ] Autocomplete
-- [ ] Loading state
-- [-] Error state
+- [x] Loading state
+- [x] Error state: would have liked to do some better error handling for searching
+- [x] Buttons for switching between list and map in mobile experience
 
 ## Notes before coding:
 
@@ -60,7 +64,7 @@ Save your file, run `npm install`, and then `npm start`.
 - Security: Currently, I would not deploy this app as .env files are not secure and would expose my private API key during the build process. Hosting this app in a private repo will provide security for now. If I need to deploy this, a middleware that API that I build where the google API key could be more securely stored could be one possible solution to keep the API key safe.
 - I wasn't able to use the InVision tool to inspect the design docs, they appeared as images. This greatly reduced my ability to provide pixel-perfect results
 - The text color given in the designs are not accessible
-- I don't think the card design isn't accessible as the favorite button is nested inside of a clickable card
+- I don't think the card design is accessible as the favorite button is nested inside of a clickable card?
 
 ## Available Scripts
 
