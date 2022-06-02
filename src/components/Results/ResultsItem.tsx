@@ -9,6 +9,7 @@ import defaultAvatar from "images/defaultAvatar.jpeg";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
+import IconButton from "@mui/material/IconButton";
 
 interface Props {
   result: google.maps.places.PlaceResult;
@@ -21,16 +22,18 @@ function ResultsItem({ result }: Props) {
   if (!value) {
     throw new Error("Could not find context value");
   }
+
   const setCenter = value?.setCenter;
   const handleClick = () => {
     const lat = result?.geometry?.location?.lat();
     const lng = result?.geometry?.location?.lng();
-    console.log({ lat }, { lng });
 
     setCenter && lat && lng && setCenter({ lat, lng });
   };
 
-  const handleClickFavorite = () => setFavorite(!favorite);
+  const handleClickFavorite = () => {
+    setFavorite(!favorite);
+  };
 
   return (
     <Card
@@ -66,6 +69,7 @@ function ResultsItem({ result }: Props) {
             <Typography variant="h6">{result?.name}</Typography>
             <Box sx={{ display: "flex" }}>
               <Rating
+                aria-
                 name={`${result?.name} rating: ${result?.rating}`}
                 color="F5D24A"
                 value={result?.rating || 0}
@@ -81,13 +85,15 @@ function ResultsItem({ result }: Props) {
             <Typography variant="caption">$$ More info here</Typography>
           </Box>
         </Box>
-        <Box sx={{ cursor: "pointer" }} onClick={handleClickFavorite}>
-          {favorite ? (
+        {favorite ? (
+          <IconButton aria-label="unlike" onClick={handleClickFavorite}>
             <FavoriteIcon color="primary" />
-          ) : (
+          </IconButton>
+        ) : (
+          <IconButton aria-label="like" onClick={handleClickFavorite}>
             <FavoriteBorderIcon sx={{ opacity: "0.3" }} />
-          )}
-        </Box>
+          </IconButton>
+        )}
       </Box>
     </Card>
   );

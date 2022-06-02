@@ -1,0 +1,16 @@
+{
+  "Create a describe block": {
+    "prefix": "describe",
+    "body": [
+      "describe('$1', () => {",
+      "\tit('should $2', () => {",
+
+      "\t});",
+      "})"
+    ]
+  },
+  "Create an it block": {
+    "prefix": "it",
+    "body": ["it('should $1', () => {", "});"]
+  }
+}

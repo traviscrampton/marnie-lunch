@@ -16,7 +16,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "src",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "experimentalDecorators": true
   },
-  "include": ["src"]
+  "include": ["src", "@types/jest", "@types/google.maps", "src/**/*.ts"],
+  "exclude": ["src/**/*.test.js", "node_modules"]
 }

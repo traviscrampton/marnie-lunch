@@ -19,7 +19,6 @@ const MapWrapper = forwardRef((props: {}, ref: React.Ref<HTMLDivElement>) => {
   const setZoom = value?.setZoom;
 
   const onIdle = (m: google.maps.Map) => {
-    console.log("onIdle");
     setZoom(m.getZoom()!);
     m.getCenter() && setCenter(m.getCenter()!.toJSON());
   };
