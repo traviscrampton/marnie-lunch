@@ -9,6 +9,7 @@ import Context from "Context/Context";
 import addPlaces from "helpers/addPlaces";
 import Button from "@mui/material/Button";
 import RoomIcon from "@mui/icons-material/Room";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 function App() {
@@ -124,7 +125,7 @@ function App() {
           <Box
             sx={{
               display: "flex",
-              height: "calc(100vh - 90px);",
+              height: "calc(100vh - 110px);",
               padding: 2,
               flexWrap: "wrap",
             }}
@@ -150,7 +151,7 @@ function App() {
                   Map
                 </Button>
                 <Button
-                  startIcon={<RoomIcon />}
+                  startIcon={<FormatListBulletedIcon />}
                   variant="contained"
                   color="primary"
                   sx={{ marginLeft: 0.5 }}

@@ -27,7 +27,7 @@ const MapWrapper = forwardRef((props: {}, ref: React.Ref<HTMLDivElement>) => {
     <Box
       sx={{
         display: "flex",
-        height: "calc(100vh - 100px)",
+        height: "calc(100vh - 110px)",
         flex: "2 2 20em",
       }}
       ref={ref}

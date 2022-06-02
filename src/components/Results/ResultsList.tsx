@@ -18,7 +18,7 @@ const ResultsList = forwardRef((_, ref: React.Ref<HTMLDivElement>) => {
       sx={{
         marginRight: isMobile ? "default" : 2,
         overflowY: "scroll",
-        height: !isMobile ? "calc(100vh - 100px)" : "default",
+        height: !isMobile ? "calc(100vh - 110px)" : "default",
         flex: "1 1 20em",
       }}
     >

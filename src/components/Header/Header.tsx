@@ -64,7 +64,7 @@ export default function Header() {
               sx={{
                 display: "flex",
                 flex: 1,
-                justifyContent: isMobile ? "center" : "normal",
+                justifyContent: isMobile ? "center" : "flex-end",
                 paddingTop: 1,
                 paddingBottom: 1,
               }}
