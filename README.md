@@ -79,3 +79,16 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 I removed `npm build` as I don't recommend you building this if you're using env for your API key.
+
+## Screenshots
+Responsive View:
+<img width="371" alt="Screen Shot 2022-06-02 at 7 38 05 PM" src="https://user-images.githubusercontent.com/13192976/171757890-0940d592-7dc3-4885-86ef-63518b7f780b.png">
+
+Filter Modal:
+<img width="351" alt="Screen Shot 2022-06-02 at 7 36 01 PM" src="https://user-images.githubusercontent.com/13192976/171757911-81ca4f9e-76dc-4a85-b852-e6da60f23365.png">
+
+Desktop View:
+<img width="1676" alt="Screen Shot 2022-06-02 at 7 35 54 PM" src="https://user-images.githubusercontent.com/13192976/171757919-3a492300-9131-4db5-8c84-e9d70ba049b3.png">
+
+I created design assets in Sketch because the InVision designs didn't allow for Inspecting, even after logging into my InVision account.
+<img width="1073" alt="Screen Shot 2022-06-02 at 7 45 08 PM" src="https://user-images.githubusercontent.com/13192976/171758286-88cbe3a3-8a0f-4979-b3d3-4637da81887e.png">
