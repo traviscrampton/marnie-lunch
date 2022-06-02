@@ -1,3 +1,5 @@
+import Context from "Context/Context";
+import { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
@@ -9,37 +11,47 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import StarIcon from "@mui/icons-material/Star";
 
 interface Props {
-  active: boolean;
-  avatarUrl?: string;
-  favorite?: boolean;
-  numberOfReviews: number;
-  rating?: number;
-  subtitle?: string;
-  title: string;
-  onClick: () => void;
+  result: google.maps.places.PlaceResult;
 }
 
-function ResultsItem({
-  active,
-  avatarUrl = defaultAvatar,
-  favorite,
-  numberOfReviews,
-  rating,
-  subtitle,
-  title,
-  onClick,
-}: Props) {
+function ResultsItem({ result }: Props) {
+  const photo = result?.photos![0]?.getUrl();
+  const [favorite, setFavorite] = useState(false);
+  const value = useContext(Context);
+  if (!value) {
+    throw new Error("Could not find context value");
+  }
+  const setCenter = value?.setCenter;
+  const handleClick = () => {
+    const lat = result?.geometry?.location?.lat();
+    const lng = result?.geometry?.location?.lng();
+    console.log({ lat }, { lng });
+
+    setCenter && lat && lng && setCenter({ lat, lng });
+  };
+
+  const handleClickFavorite = () => setFavorite(!favorite);
+
   return (
-    <Card sx={{ border: "0.5px solid #CCCCCC" }}>
-      <Box sx={{ display: "flex", padding: 1, paddingBottom: 1 }}>
+    <Card
+      sx={{ border: "0.5px solid #CCCCCC", marginBottom: 1, cursor: "pointer" }}
+      onMouseEnter={handleClick}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          padding: 1.25,
+          justifyContent: "space-between",
+        }}
+      >
         <Box
           sx={{ display: "flex", alignItems: "flex-start" }}
-          onClick={onClick}
+          onClick={handleClick}
         >
           <Avatar
-            alt={`${title}-photo`}
+            alt={`${result?.name || "restaurant"}-photo`}
             sx={{ width: 60, height: 60 }}
-            srcSet={avatarUrl}
+            srcSet={photo || defaultAvatar}
             variant="square"
           />
           <Box
@@ -51,25 +63,25 @@ function ResultsItem({
               marginRight: 1,
             }}
           >
-            <Typography variant="h6">{title}</Typography>
+            <Typography variant="h6">{result?.name}</Typography>
             <Box sx={{ display: "flex" }}>
               <Rating
-                name={`${title} rating: ${rating}`}
+                name={`${result?.name} rating: ${result?.rating}`}
                 color="F5D24A"
-                value={rating}
+                value={result?.rating || 0}
                 precision={1}
                 readOnly
                 size="small"
                 emptyIcon={<StarIcon fontSize="inherit" />}
               />
               <Typography sx={{ marginLeft: 0.4 }} variant="caption">
-                ({numberOfReviews})
+                ({result?.user_ratings_total})
               </Typography>
             </Box>
-            {subtitle && <Typography variant="caption">{subtitle}</Typography>}
+            <Typography variant="caption">$$ More info here</Typography>
           </Box>
         </Box>
-        <Box onClick={() => console.log("favorite")}>
+        <Box sx={{ cursor: "pointer" }} onClick={handleClickFavorite}>
           {favorite ? (
             <FavoriteIcon color="primary" />
           ) : (

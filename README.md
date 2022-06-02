@@ -26,6 +26,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Would Haves
 
+- Pagination or 'load more' button
+
 ## Could Haves
 
 - [ ] Responsive design

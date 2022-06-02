@@ -1,9 +1,20 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function Logo() {
+  const isMobile = useMediaQuery("(max-width:600px)");
+
   return (
-    <Box sx={{ flexGrow: 2, display: "flex", alignItems: "center" }}>
+    <Box
+      sx={{
+        flex: 2,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: isMobile ? "center" : "normal",
+        paddingTop: isMobile ? 1 : "inherit",
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="150"
@@ -26,7 +37,7 @@ function Logo() {
           ></path>
         </g>
       </svg>
-      <Typography sx={{ marginLeft: 1 }} variant="h1">
+      <Typography sx={{ marginLeft: 1, whiteSpace: "nowrap" }} variant="h1">
         At Lunch
       </Typography>
     </Box>
