@@ -61,10 +61,10 @@ You may need to use `npm install --legacy-peer-deps` if you receive warnings abo
 
 - Scale: the Google Places API has request quotas and [https://developers.google.com/maps/documentation/javascript/places#UsageLimits](they recommend service APIs if batch requests are needed.)
 - Default map location: user's location, if available, or AllTrails HQ: 530 Bush St #900, San Francisco
-- Security: Currently, I would not deploy this app as .env files are not secure and would expose my private API key during the build process. Hosting this app in a private repo will provide security for now. If I need to deploy this, a middleware that API that I build where the google API key could be more securely stored could be one possible solution to keep the API key safe.
+- Security: Currently, I would not deploy this app as .env files are not secure and would expose my private API key during the build process. Hosting this app in a private repo will provide security for now. If I need to deploy this, a middleware API that I build where the google API key could be more securely stored on the back-end could be one possible solution to keep the API key safe.
 - I wasn't able to use the InVision tool to inspect the design docs, they appeared as images. This greatly reduced my ability to provide pixel-perfect results
-- The text color given in the designs are not accessible
-- I don't think the card design is accessible as the favorite button is nested inside of a clickable card?
+- The text colors given in the designs are not accessible!
+- I don't think the card design is accessible as the favorite button is nested inside of a clickable card. [https://dequeuniversity.com/rules/axe/4.4/nested-interactive](Nested Interactive rule)
 
 ## Available Scripts
 
