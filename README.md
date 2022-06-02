@@ -14,9 +14,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Project Requirements
 
-- [ ] Allow users to search for restaurants
-- [ ] Render search results in a list
-- [ ] Render results as a pin on the map
+- [x] Allow users to search for restaurants
+- [x] Render search results in a list
+- [-] Render results as a pin on the map
 
 ## Nice to Have:
 

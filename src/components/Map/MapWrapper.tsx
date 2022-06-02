@@ -1,5 +1,5 @@
 import Context from "Context/Context";
-import { useContext } from "react";
+import { forwardRef, useContext } from "react";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -10,7 +10,7 @@ const render = (status: Status): any => {
   return <CircularProgress color="primary" />;
 };
 
-function MapWrapper() {
+const MapWrapper = forwardRef((props: {}, ref: React.Ref<HTMLDivElement>) => {
   const value = useContext(Context);
   if (!value) {
     throw new Error("Could not find context value");
@@ -31,12 +31,12 @@ function MapWrapper() {
         height: "calc(100vh - 100px)",
         flex: "2 2 20em",
       }}
+      ref={ref}
     >
       <div
         style={{
           height: "100%",
           width: "100%",
-          border: "3px solid red",
         }}
       >
         <Wrapper
@@ -49,6 +49,6 @@ function MapWrapper() {
       </div>
     </Box>
   );
-}
+});
 
 export default MapWrapper;

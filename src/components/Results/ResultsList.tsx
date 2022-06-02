@@ -13,20 +13,22 @@ function ResultsList() {
   const places = value?.places;
 
   return (
-    <Box
-      sx={{
-        marginRight: isMobile ? "default" : 2,
-        overflowY: "scroll",
-        height: !isMobile ? "calc(100vh - 100px)" : "default",
-        flex: "1 1 20em",
-      }}
-    >
-      {places.map(
-        (restaurant: google.maps.places.PlaceResult, index: number) => (
-          <ResultsItem key={restaurant.name! + index} result={restaurant} />
-        )
-      )}
-    </Box>
+    <>
+      <Box
+        sx={{
+          marginRight: isMobile ? "default" : 2,
+          overflowY: "scroll",
+          height: !isMobile ? "calc(100vh - 100px)" : "default",
+          flex: "1 1 20em",
+        }}
+      >
+        {places.map(
+          (restaurant: google.maps.places.PlaceResult, index: number) => (
+            <ResultsItem key={restaurant.name! + index} result={restaurant} />
+          )
+        )}
+      </Box>
+    </>
   );
 }
 

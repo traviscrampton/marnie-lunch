@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import Header from "components/Header/Header";
 import ResultsList from "components/Results/ResultsList";
 import MapWrapper from "components/Map/MapWrapper";
@@ -7,8 +7,13 @@ import theme from "styles/theme";
 import Box from "@mui/material/Box";
 import Context from "Context/Context";
 import addPlaces from "helpers/addPlaces";
+import Button from "@mui/material/Button";
+import RoomIcon from "@mui/icons-material/Room";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function App() {
+  const mapRef = useRef<HTMLDivElement | null>(null);
+  const isMobile = useMediaQuery("(max-width:600px)");
   const getCenter = useCallback(() => {
     let tempCenter = {
       lat: 37.79113833400986,
@@ -102,6 +107,10 @@ function App() {
     ]
   );
 
+  const scrollToMap = () => {
+    mapRef?.current?.scrollIntoView();
+  };
+
   return (
     <Context.Provider value={contextValue}>
       <ThemeProvider theme={theme}>
@@ -116,7 +125,23 @@ function App() {
             }}
           >
             <ResultsList />
-            <MapWrapper />
+            <MapWrapper ref={mapRef} />
+            {isMobile && (
+              <Button
+                startIcon={<RoomIcon />}
+                variant="contained"
+                color="primary"
+                sx={{
+                  position: "sticky",
+                  bottom: "40px",
+                  left: "50%",
+                  transform: "translate(-50%)",
+                }}
+                onClick={scrollToMap}
+              >
+                Map
+              </Button>
+            )}
           </Box>
         </Box>
       </ThemeProvider>
